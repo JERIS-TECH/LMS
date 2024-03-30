@@ -218,7 +218,7 @@
     <div class="nav-item dropdown">
         <a id="drop-all-courses" class="nav-link dropdown-toggle btn btn-info" href="#" role="button"
            data-bs-toggle="dropdown" aria-expanded="false">
-            All Courses
+            কোর্স সমুহ
         </a>
         <ul id="drop-menu" class="dropdown-menu">
             <li><a class="dropdown-item" href="#">Action</a></li>
@@ -279,8 +279,8 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <form class="form-inline ml-auto">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <input class="form-control mr-sm-2" type="search" placeholder="খুজুন" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">খুজুন</button>
         </form>
         <ul class="navbar-nav ml-auto">
 
@@ -299,7 +299,7 @@
                             href="{{ route('login') }}"
                             class="nav-link"
                         >
-                            Log in
+                            লগ ইন
                         </a></li>
 
                     @if (Route::has('register'))
@@ -308,13 +308,13 @@
                                 href="{{ route('register') }}"
                                 class="nav-link"
                             >
-                                Register
+                                রেজিস্টার
                             </a></li>
                     @endif
                 @endauth
             @endif
             <li class="nav-item">
-                <a class="nav-link" href="/bn">বাংলা</a> <!-- Language switch button -->
+                <a class="nav-link" href="/">English</a> <!-- Language switch button -->
             </li>
         </ul>
     </div>
@@ -328,15 +328,15 @@
                 {{ Auth::user()->name }}
             </a>
             <div id="drop-menu" class="dropdown-menu">
-                <a class="dropdown-item" href="{{ route('profile.edit') }}">{{ __('Profile') }}</a>
+                <a class="dropdown-item" href="{{ route('profile.edit') }}">{{ __('প্রোফাইল') }}</a>
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
 
                     <a class="dropdown-item" href="{{ route('logout') }}"
-                                     onclick="event.preventDefault();
+                       onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                        {{ __('Log Out') }}
+                        {{ __('লগ আউট') }}
                     </a>
                 </form>
             </div>
@@ -352,11 +352,9 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <h1>Unlock your potential with interactive learning experiences</h1>
-                <p>Empower yourself through dynamic courses and hands-on projects, transforming knowledge into action
-                    for real-world success.</p>
-                <p><strong>25+</strong> Total courses, <strong>17k+</strong> total students, <strong>30+</strong> total
-                    teachers.</p>
+                <h1>ইন্টারেক্টিভ শেখার অভিজ্ঞতার সাথে আপনার সম্ভাবনা আনলক করুন</h1>
+                <p>বাস্তব-বিশ্ব সাফল্যের জন্য জ্ঞানকে কর্মে রূপান্তরিত করে, গতিশীল কোর্স এবং হ্যান্ডস-অন প্রজেক্টের মাধ্যমে নিজেকে শক্তিশালী করুন।</p>
+                <p><strong>25+</strong> মোট কোর্স, <strong>17k+</strong> মোট ছাত্র, <strong>30+</strong> মোট শিক্ষক.</p>
             </div>
             <div class="col-md-6 d-flex justify-content-end">
                 <!-- Added "d-flex justify-content-end" for moving the image to the right -->
@@ -376,7 +374,7 @@
                 <a href=""><img src="./assets/arrowLeft.png" alt="" class="arrow-img"></a>
             </div>
             <div class="col-md-8">
-                <h2 class="text-center">Popular Courses</h2>
+                <h2 class="text-center">জনপ্রিয় কোর্স</h2>
             </div>
             <div class="col-md-2 text-right">
                 <a href=""><img src="./assets/arrowRight.png" alt="" class="arrow-img"></a>
@@ -397,10 +395,10 @@
                         <div class="card-body">
                             <h5 class="card-title">Course Title {{$i}}</h5>
                             <!-- Add course price here -->
-                            <p class="card-text"><strong>BDT 1200</strong></p>
+                            <p class="card-text"><strong>1200 টাকা</strong></p>
                             <div class="btn-group d-flex justify-content-between">
-                                <button class="btn btn-primary btn-preview">Preview</button>
-                                <button class="btn btn-success btn-enroll">Enroll</button>
+                                <button class="btn btn-primary btn-preview">দেখুন</button>
+                                <button class="btn btn-success btn-enroll">ক্রয় করুন</button>
                             </div>
                         </div>
                     </div>
@@ -471,10 +469,10 @@
                         <div class="card-body">
                             <h5 class="card-title">Course Title {{$i}}</h5>
                             <!-- Add course price here -->
-                            <p class="card-text"><strong>BDT 1200</strong></p>
+                            <p class="card-text"><strong>1200 টাকা</strong></p>
                             <div class="btn-group d-flex justify-content-between">
-                                <button class="btn btn-primary btn-preview">Preview</button>
-                                <button class="btn btn-success btn-enroll">Enroll</button>
+                                <button class="btn btn-primary btn-preview">দেখুন</button>
+                                <button class="btn btn-success btn-enroll">ক্রয় করুন</button>
                             </div>
                         </div>
                     </div>
@@ -483,7 +481,7 @@
         </div>
 
         <div class="text-center">
-            <a class="btn btn-primary btn-more">More</a>
+            <a class="btn btn-primary btn-more">আরও দেখুন</a>
         </div>
     </div>
 </section>
