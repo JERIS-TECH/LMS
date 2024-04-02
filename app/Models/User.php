@@ -22,6 +22,9 @@ class User extends Authenticatable
         'email',
         'phone',
         'password',
+        'profile_img_path',
+        'address',
+        'fb_id_link',
     ];
 
     /**
