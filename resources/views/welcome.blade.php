@@ -329,6 +329,11 @@
             </a>
             <div id="drop-menu" class="dropdown-menu">
                 <a class="dropdown-item" href="{{ route('profile.edit') }}">{{ __('Profile') }}</a>
+                <a class="dropdown-item" href="#">{{ __('My Courses') }}</a>
+                <a class="dropdown-item" href="#">{{ __('Favourites') }}</a>
+                @if(Auth::user()->role_id == 3 || Auth::user()->role_id == 4)
+                    <a class="dropdown-item" href="#">{{ __('Admin Panel') }}</a>
+                @endif
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
