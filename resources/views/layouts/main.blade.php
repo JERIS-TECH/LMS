@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home | {{ config('app.name') }}</title>
-    <link rel="icon" href="./assets/favicon.png" type="image/x-icon">
+    <title>@yield('title') | {{ config('app.name') }}</title>
+    <link rel="icon" href="{{ asset('/assets/favicon.png') }}" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
@@ -19,20 +19,11 @@
             background-color: #fff; /* Default white background for all sections */
         }
 
-        .course-thumbnail {
-            position: relative;
-            overflow: hidden;
-        }
-
         .course-thumbnail img {
             width: 100%;
             height: auto;
         }
 
-        .btn-preview, .btn-enroll {
-            position: absolute;
-            bottom: 10px;
-        }
 
         /* Custom CSS for button borders */
         .navbar-nav .nav-item .nav-link {
@@ -109,13 +100,6 @@
             color: black;
         }
 
-        /*.dropend:hover{
-            background-color: #003366;
-            color: #fff;
-        }
-        .dropend:hover .inner-drop-down{
-            color: #fff;
-        }*/
         .dropdown-toggle.active {
             color: red;
         }
@@ -172,7 +156,6 @@
             transition: all 0.3s ease; /* Add a smooth transition effect */
         }
 
-
         /* Add shadow and hover effect to the course contents cards */
         .cc {
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow */
@@ -182,7 +165,6 @@
         .cc:hover {
             transform: translateY(-5px); /* Move the card slightly up on hover */
         }
-
 
         /* CSS for love icon and tooltip */
         .love-icon {
@@ -203,6 +185,13 @@
         }
 
 
+
+
+
+
+
+
+
     </style>
 
 
@@ -212,7 +201,7 @@
 <!-- Section 1: Navbar -->
 <nav style="background-color: #f0f8ff; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"
      class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/"><img src="./assets/jeristech-logo.png" alt="Logo"></a>
+    <a class="navbar-brand" href="/"><img src="{{ asset('/assets/jeristech-logo.png') }}" alt="Logo"></a>
 
     <!-- All Courses Dropdown -->
     <div class="nav-item dropdown">
@@ -334,7 +323,7 @@
                     @csrf
 
                     <a class="dropdown-item" href="{{ route('logout') }}"
-                                     onclick="event.preventDefault();
+                       onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                         {{ __('Log Out') }}
                     </a>
@@ -346,212 +335,11 @@
 
 </nav>
 
-<!-- Section 1: Main Content -->
-<section style="background-color: #f0f8ff; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"
-         class="section with-shadow shadow-lg mb-5 bg-body rounded">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <h1>Unlock your potential with interactive learning experiences</h1>
-                <p>Empower yourself through dynamic courses and hands-on projects, transforming knowledge into action
-                    for real-world success.</p>
-                <p><strong>25+</strong> Total courses, <strong>17k+</strong> total students, <strong>30+</strong> total
-                    teachers.</p>
-            </div>
-            <div class="col-md-6 d-flex justify-content-end">
-                <!-- Added "d-flex justify-content-end" for moving the image to the right -->
-                <img src="./assets/intro_img.jpg" alt="Image" class="img-fluid">
-                <!-- Added class "img-fluid" for responsiveness -->
-            </div>
-        </div>
-    </div>
-</section>
 
-
-<!-- Section 2: Popular Courses -->
-<section class="section">
-    <div class="container">
-        <div class="row d-flex align-items-center justify-content-between mb-4">
-            <div class="col-md-2">
-                <a href=""><img src="./assets/arrowLeft.png" alt="" class="arrow-img"></a>
-            </div>
-            <div class="col-md-8">
-                <h2 class="text-center">Popular Courses</h2>
-            </div>
-            <div class="col-md-2 text-right">
-                <a href=""><img src="./assets/arrowRight.png" alt="" class="arrow-img"></a>
-            </div>
-        </div>
-
-        <!-- Course Thumbnails -->
-        <div class="row">
-            @for($i = 1; $i <= 4; $i++)
-                <div class="col-md-3 mb-4">
-                    <div class="card shadow course-card">
-                        <img src="./assets/course_img.jpg" class="card-img-top" alt="Course {{$i}}">
-                        <!-- Love icon -->
-                        <div class="love-icon">
-                            <i class="far fa-heart"></i>
-                            <span class="tooltip">Add to favorite</span>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Course Title {{$i}}</h5>
-                            <!-- Add course price here -->
-                            <p class="card-text"><strong>BDT 1200</strong></p>
-                            <div class="btn-group d-flex justify-content-between">
-                                <a href="/course/1/preview" class="btn btn-primary btn-preview">Preview</a>
-                                <button class="btn btn-success btn-enroll">Enroll</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            @endfor
-        </div>
-
-    </div>
-</section>
-
-
-<!-- Section 3: Filtered Courses -->
-<section class="section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <!-- Course Categories as Buttons -->
-                <div class="btn-group mb-3" role="group" aria-label="Course Categories">
-                    <a href="" type="button" class="btn btn-secondary active">HSC</a>
-                    <a href="" type="button" class="btn btn-secondary">SSC</a>
-                    <a href="" type="button" class="btn btn-secondary">Web Design</a>
-                    <a href="" type="button" class="btn btn-secondary">Graphic Design</a>
-                    <a href="" type="button" class="btn btn-secondary">BCS</a>
-                </div>
-            </div>
-            <div class="col-md-6 d-flex justify-content-end">
-                <!-- Filter Options -->
-                <a id="filterBtn" class="btn btn-primary mb-3 mr-2">Filter By</a>
-                <a id="allCoursesBtn2" class="btn btn-info mb-3">All Courses</a>
-                <!-- Modal for filter options -->
-                <div class="modal fade" id="filterModal" tabindex="-1" role="dialog" aria-labelledby="filterModalLabel"
-                     aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="filterModalLabel">Filter Options</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <!-- Checkboxes for filter options -->
-                                <label><input type="checkbox" value="option1"> Option 1</label><br>
-                                <label><input type="checkbox" value="option2"> Option 2</label><br>
-                                <label><input type="checkbox" value="option3"> Option 3</label><br>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Apply</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Course Thumbnails -->
-        <div class="row">
-            @for($i = 1; $i <= 8; $i++)
-                <div class="col-md-3 mb-4">
-                    <div class="card shadow course-card">
-                        <img src="./assets/course_img.jpg" class="card-img-top" alt="Course {{$i}}">
-                        <!-- Love icon -->
-                        <div class="love-icon">
-                            <i class="far fa-heart"></i>
-                            <span class="tooltip">Add to favorite</span>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Course Title {{$i}}</h5>
-                            <!-- Add course price here -->
-                            <p class="card-text"><strong>BDT 1200</strong></p>
-                            <div class="btn-group d-flex justify-content-between">
-                                <a href="/course/1/preview" class="btn btn-primary btn-preview">Preview</a>
-                                <button class="btn btn-success btn-enroll">Enroll</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            @endfor
-        </div>
-
-        <div class="text-center">
-            <a class="btn btn-primary btn-more">More</a>
-        </div>
-    </div>
-</section>
-
-
-<!-- Section 4: Course Contents -->
-<section class="section">
-    <div class="container">
-        <h2 class="text-center mb-4">Course Contents</h2>
-        <p class="text-center mb-5">See what you are getting after joining our courses</p>
-        <div class="row">
-            <!-- Card 1 -->
-            <div class="col-md-6">
-                <div class="card bg-primary text-white cc">
-                    <div class="card-body">
-                        <i class="fas fa-industry fa-3x"></i>
-                        <p class="mt-3">Industry Focused Live Courses</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Card 2 -->
-            <div class="col-md-6">
-                <div class="card bg-success text-white cc">
-                    <div class="card-body">
-                        <i class="fas fa-users fa-3x"></i>
-                        <p class="mt-3">Interactive Live Class</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Card 3 -->
-            <div class="col-md-6">
-                <div class="card bg-danger text-white cc">
-                    <div class="card-body">
-                        <i class="fas fa-book fa-3x"></i>
-                        <p class="mt-3">Module Based Study Plan</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Card 4 -->
-            <div class="col-md-6">
-                <div class="card bg-warning text-white cc">
-                    <div class="card-body">
-                        <i class="fas fa-chart-line fa-3x"></i>
-                        <p class="mt-3">Realtime Progress Tracking</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Card 5 -->
-            <div class="col-md-6">
-                <div class="card bg-info text-white cc">
-                    <div class="card-body">
-                        <i class="fas fa-user-tie fa-3x"></i>
-                        <p class="mt-3">Learn from Industry Experts</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Card 6 -->
-            <div class="col-md-6">
-                <div class="card bg-primary text-white cc">
-                    <div class="card-body">
-                        <i class="fas fa-handshake fa-3x"></i>
-                        <p class="mt-3">Intensive Job Placement Support</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+<!-- Page Content -->
+<main>
+    @yield('content')
+</main>
 
 
 <!-- Section 5: Footer -->
@@ -560,7 +348,7 @@
         <div class="row">
             <div class="col-md-3">
                 <!-- Logo and website tagline -->
-                <img src="./assets/jeristech-logo.png" alt="Logo">
+                <img src="{{ asset('/assets/jeristech-logo.png') }}" alt="Logo">
                 <p>Online Skill Development Platform</p>
                 <p>Stay connected with community</p>
                 <!-- Social media icons -->
@@ -589,9 +377,9 @@
             <div class="col-md-3">
                 <!-- App download options -->
                 <h4>Apps</h4>
-                <a href=""><img src="./assets/google-play.png" alt="Google Play"
+                <a href=""><img src="{{ asset('/assets/google-play.png') }}" alt="Google Play"
                                 style="width: 100px; height: auto;"></a>
-                <a href=""><img src="./assets/app-store.png" alt="App Store" style="width: 100px; height: auto;"></a>
+                <a href=""><img src="{{ asset('/assets/app-store.png') }}" alt="App Store" style="width: 100px; height: auto;"></a>
             </div>
         </div>
     </div>
@@ -603,13 +391,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://kit.fontawesome.com/6b65cbdea7.js" crossorigin="anonymous"></script>
 
-<script>
-    $(document).ready(function () {
-        $('#filterBtn').click(function () {
-            $('#filterModal').modal('show'); // Show the modal
-        });
-    });
-</script>
 
 <script>
     $(document).ready(function () {
@@ -633,21 +414,6 @@
             if (!$(event.target).closest('.dropdown').length) {
                 $('.dropdown-menu').css('display', 'none');
                 $('.dropdown-toggle').removeClass('active'); // Remove the 'active' class
-            }
-        });
-    });
-</script>
-
-
-<script>
-    $(document).ready(function () {
-        // Toggle filled state of love icon and display tooltip
-        $('.love-icon i').click(function () {
-            $(this).toggleClass('filled'); // Toggle filled class
-            if ($(this).hasClass('filled')) {
-                $(this).siblings('.tooltip').text('Remove from favorite').fadeIn();
-            } else {
-                $(this).siblings('.tooltip').text('Add to favorite').fadeIn();
             }
         });
     });
