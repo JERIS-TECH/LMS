@@ -23,5 +23,6 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('course/{course_id}/preview', [CourseController::class, 'preview'])->name('course.preview');
+Route::get('course/{course_id}/preview/bn', [CourseController::class, 'previewBN'])->name('course.preview.bn');
 
 require __DIR__.'/auth.php';

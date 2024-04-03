@@ -12,4 +12,11 @@ class CourseController extends Controller
             'course' => $course,
         ]);
     }
+
+    public function previewBN(Request $request, $course)
+    {
+        return view('course.preview-bn', [
+            'course' => $course,
+        ]);
+    }
 }

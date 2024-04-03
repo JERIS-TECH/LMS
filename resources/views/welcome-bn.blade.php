@@ -397,7 +397,7 @@
                             <!-- Add course price here -->
                             <p class="card-text"><strong>1200 টাকা</strong></p>
                             <div class="btn-group d-flex justify-content-between">
-                                <button class="btn btn-primary btn-preview">দেখুন</button>
+                                <a href="/course/1/preview/bn" class="btn btn-primary btn-preview">দেখুন</a>
                                 <button class="btn btn-success btn-enroll">ক্রয় করুন</button>
                             </div>
                         </div>
@@ -471,7 +471,7 @@
                             <!-- Add course price here -->
                             <p class="card-text"><strong>1200 টাকা</strong></p>
                             <div class="btn-group d-flex justify-content-between">
-                                <button class="btn btn-primary btn-preview">দেখুন</button>
+                                <a href="/course/1/preview/bn" class="btn btn-primary btn-preview">দেখুন</a>
                                 <button class="btn btn-success btn-enroll">ক্রয় করুন</button>
                             </div>
                         </div>

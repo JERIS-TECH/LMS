@@ -1,4 +1,8 @@
-<!DOCTYPE html>
+@php
+    use Illuminate\Support\Facades\Request;
+@endphp
+
+    <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -51,7 +55,7 @@
             color: #fff; /* Change text color on hover to white */
         }
 
-        .namedropdown{
+        .namedropdown {
             border: 1px solid #ccc; /* Add border to the buttons */
             padding: 5px 10px; /* Adjust padding for better appearance */
             margin: 0 5px; /* Add margin between buttons */
@@ -185,13 +189,6 @@
         }
 
 
-
-
-
-
-
-
-
     </style>
 
 
@@ -303,7 +300,12 @@
                 @endauth
             @endif
             <li class="nav-item">
-                <a class="nav-link" href="/bn">বাংলা</a> <!-- Language switch button -->
+                @if(strpos(Request::path(), '/bn') === false)
+                    <a class="nav-link" href="{{ url(Request::path() . '/bn') }}">বাংলা</a>
+                @else
+                    <a class="nav-link" href="{{ url(str_replace('/bn', '', Request::path())) }}">English</a>
+                @endif
+                <!-- Language switch button -->
             </li>
         </ul>
     </div>
@@ -379,7 +381,8 @@
                 <h4>Apps</h4>
                 <a href=""><img src="{{ asset('/assets/google-play.png') }}" alt="Google Play"
                                 style="width: 100px; height: auto;"></a>
-                <a href=""><img src="{{ asset('/assets/app-store.png') }}" alt="App Store" style="width: 100px; height: auto;"></a>
+                <a href=""><img src="{{ asset('/assets/app-store.png') }}" alt="App Store"
+                                style="width: 100px; height: auto;"></a>
             </div>
         </div>
     </div>

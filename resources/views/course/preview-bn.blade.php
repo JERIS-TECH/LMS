@@ -87,25 +87,25 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <h2>SSC / Chemistry</h2>
-                    <h4>Chapter 1</h4>
-                    <p>A practical programming course for office workers, academics, and administrators who want to improve their productivity.</p>
-                    <p><strong>500</strong> students have purchased this course</p>
-                    <p>Updated on: <strong>02 March 2024</strong></p>
-                    <p>Language: <strong>Bangla</strong></p>
+                    <h2>এসএসসি / রসায়ন</h2>
+                    <h4>অধ্যায় 1</h4>
+                    <p>অফিস কর্মী, শিক্ষাবিদ এবং প্রশাসক যারা তাদের উৎপাদনশীলতা উন্নত করতে চান তাদের জন্য একটি ব্যবহারিক প্রোগ্রামিং কোর্স।</p>
+                    <p><strong>500</strong> জন শিক্ষার্থী এই কোর্সটি কিনেছে।</p>
+                    <p>আপডেট করা হয়েছে: <strong>02 মার্চ 2024</strong></p>
+                    <p>ভাষা: <strong>বাংলা</strong></p>
                 </div>
                 <div class="col-md-6 text-center">
                     <div class="course-thumbnail">
                         <img src="{{ asset('assets/course_img.jpg') }}" alt="Course Thumbnail" style="max-width: 100%; height: auto;">
                         <div class="overlay">
                             <i class="fas fa-play-circle fa-3x" style="color: black;"></i>
-                            <p>Video preview of the course</p>
+                            <p>কোর্সের ভিডিও প্রিভিউ</p>
                         </div>
                     </div>
 
                     <div class="btn-group d-flex justify-content-between mt-3">
-                        <button class="btn btn-primary"><strong>BDT 1200</strong></button>
-                        <button class="btn btn-success btn-enroll">Enroll</button>
+                        <button class="btn btn-primary"><strong>1200 টাকা</strong></button>
+                        <button class="btn btn-success btn-enroll">ক্রয় করুন</button>
                     </div>
 
                 </div>
@@ -120,7 +120,7 @@
                 <div class="col-md-6 mb-4">
                     <div class="card border-0 shadow">
                         <div class="card-body">
-                            <h3 class="card-title">Course Contents</h3>
+                            <h3 class="card-title">কোর্সের বিষয়বস্তু</h3>
                             <ul class="list-unstyled">
                                 <li>Dummy Text 1</li>
                                 <li>Dummy Text 2</li>
@@ -132,7 +132,7 @@
                 <div class="col-md-6 mb-4">
                     <div class="card border-0 shadow">
                         <div class="card-body">
-                            <h3 class="card-title">What we will learn from this course</h3>
+                            <h3 class="card-title">এই কোর্স থেকে আমরা যা শিখব</h3>
                             <ul class="list-unstyled">
                                 <li>Dummy Text 1</li>
                                 <li>Dummy Text 2</li>
@@ -154,7 +154,7 @@
                     <a href=""><img src="{{ asset('/assets/arrowLeft.png') }}" alt="" class="arrow-img"></a>
                 </div>-->
                 <div class="col-md-12">
-                    <h2 class="text-center">Related Courses</h2>
+                    <h2 class="text-center">সম্পর্কিত কোর্স</h2>
                 </div>
                 <!--<div class="col-md-2 text-right">
                     <a href=""><img src="{{ asset('/assets/arrowRight.png') }}" alt="" class="arrow-img"></a>
@@ -177,8 +177,8 @@
                                 <!-- Add course price here -->
                                 <p class="card-text"><strong>BDT 1200</strong></p>
                                 <div class="btn-group d-flex justify-content-between">
-                                    <a href="/course/1/preview" class="btn btn-primary btn-preview">Preview</a>
-                                    <button class="btn btn-success btn-enroll">Enroll</button>
+                                    <a href="/course/1/preview/bn" class="btn btn-primary btn-preview">দেখুন</a>
+                                    <button class="btn btn-success btn-enroll">ক্রয় করুন</button>
                                 </div>
                             </div>
                         </div>
@@ -187,7 +187,7 @@
             </div>
 
             <div class="text-center">
-                <a class="btn btn-primary btn-more">More</a>
+                <a class="btn btn-primary btn-more">আরও দেখুন</a>
             </div>
 
         </div>
