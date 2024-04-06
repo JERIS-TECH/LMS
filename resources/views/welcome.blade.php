@@ -405,7 +405,7 @@
                             <p class="card-text"><strong>BDT 1200</strong></p>
                             <div class="btn-group d-flex justify-content-between">
                                 <a href="/course/1/preview" class="btn btn-primary btn-preview">Preview</a>
-                                <button class="btn btn-success btn-enroll">Enroll</button>
+                                <a href="/course/1/checkout" class="btn btn-success btn-enroll">Enroll</a>
                             </div>
                         </div>
                     </div>
@@ -479,7 +479,7 @@
                             <p class="card-text"><strong>BDT 1200</strong></p>
                             <div class="btn-group d-flex justify-content-between">
                                 <a href="/course/1/preview" class="btn btn-primary btn-preview">Preview</a>
-                                <button class="btn btn-success btn-enroll">Enroll</button>
+                                <a href="/course/1/checkout" class="btn btn-success btn-enroll">Enroll</a>
                             </div>
                         </div>
                     </div>

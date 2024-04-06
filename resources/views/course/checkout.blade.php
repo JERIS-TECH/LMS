@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Preview')
+@section('title', 'Checkout')
 
 @section('content')
 
@@ -82,69 +82,62 @@
 
     </style>
 
-    <!-- Section 1: Course Details -->
+    <!-- Section 1: Order Details -->
     <section class="section with-shadow" style="background-color: #f0f8ff; margin-bottom: 20px;">
         <div class="container">
+            <h2 class="text-center" style="text-decoration: underline;">Checkout</h2>
+            <h3>Order Details :</h3>
             <div class="row">
-                <div class="col-md-6">
-                    <h2>এসএসসি / রসায়ন</h2>
-                    <h4>অধ্যায় 1</h4>
-                    <p>অফিস কর্মী, শিক্ষাবিদ এবং প্রশাসক যারা তাদের উৎপাদনশীলতা উন্নত করতে চান তাদের জন্য একটি ব্যবহারিক প্রোগ্রামিং কোর্স।</p>
-                    <p><strong>500</strong> জন শিক্ষার্থী এই কোর্সটি কিনেছে।</p>
-                    <p>আপডেট করা হয়েছে: <strong>02 মার্চ 2024</strong></p>
-                    <p>ভাষা: <strong>বাংলা</strong></p>
+                <div class="col-md-4">
+                    <img src="{{ asset('assets/course_img.jpg') }}" alt="Course Thumbnail"
+                         style="max-width: 100%; height: auto;">
                 </div>
-                <div class="col-md-6 text-center">
-                    <div class="course-thumbnail">
-                        <img src="{{ asset('assets/course_img.jpg') }}" alt="Course Thumbnail" style="max-width: 100%; height: auto;">
-                        <div class="overlay">
-                            <i class="fas fa-play-circle fa-3x" style="color: black;"></i>
-                            <p>কোর্সের ভিডিও প্রিভিউ</p>
-                        </div>
-                    </div>
-
-                    <div class="btn-group d-flex justify-content-between mt-3">
-                        <button class="btn btn-primary"><strong>1200 টাকা</strong></button>
-                        <a href="/course/1/checkout/bn" class="btn btn-success btn-enroll">ক্রয় করুন</a>
-                    </div>
-
+                <div class="col-md-8" style="text-align: end;">
+                    <h4>SSC / Chemistry</h4>
+                    <h4>Chapter 1</h4>
+                    <a href="/course/1/preview" class="mt-2 btn btn-primary">Preview</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Section 2: Course Content -->
+    <!-- Section 2: Summary -->
     <section class="section with-shadow" style="background-color: #f0f8ff; margin-bottom: 20px;">
         <div class="container">
+            <h3>Summary :</h3>
             <div class="row">
-                <div class="col-md-6 mb-4">
-                    <div class="card border-0 shadow">
-                        <div class="card-body">
-                            <h3 class="card-title">কোর্সের বিষয়বস্তু</h3>
-                            <ul class="list-unstyled">
-                                <li>Dummy Text 1</li>
-                                <li>Dummy Text 2</li>
-                                <li>Dummy Text 3</li>
-                            </ul>
+                <div class="col-md-12">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <strong>Original Price :</strong>
+                        <span><strong>BDT 1200</strong></span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <strong>Coupon Code :</strong>
+                        <div class="input-group" style="max-width: 275px;">
+                            <input type="text" class="form-control" placeholder="Enter Coupon Code">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary">Apply</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-6 mb-4">
-                    <div class="card border-0 shadow">
-                        <div class="card-body">
-                            <h3 class="card-title">এই কোর্স থেকে আমরা যা শিখব</h3>
-                            <ul class="list-unstyled">
-                                <li>Dummy Text 1</li>
-                                <li>Dummy Text 2</li>
-                                <li>Dummy Text 3</li>
-                            </ul>
-                        </div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <strong>Discount :</strong>
+                        <span><strong>BDT 0</strong></span>
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <strong>Total Price :</strong>
+                        <span><strong>BDT 1200</strong></span>
                     </div>
                 </div>
             </div>
-
+            <div class="d-flex justify-content-end"> <!-- Add these classes -->
+                <button class="btn btn-success">Complete Checkout</button>
+            </div>
         </div>
     </section>
+
+
 
     <!-- Section 3: Related Courses -->
     <section class="section">
@@ -154,7 +147,7 @@
                     <a href=""><img src="{{ asset('/assets/arrowLeft.png') }}" alt="" class="arrow-img"></a>
                 </div>-->
                 <div class="col-md-12">
-                    <h2 class="text-center">সম্পর্কিত কোর্স</h2>
+                    <h2 class="text-center">Related Courses</h2>
                 </div>
                 <!--<div class="col-md-2 text-right">
                     <a href=""><img src="{{ asset('/assets/arrowRight.png') }}" alt="" class="arrow-img"></a>
@@ -175,10 +168,10 @@
                             <div class="card-body">
                                 <h5 class="card-title">Course Title {{$i}}</h5>
                                 <!-- Add course price here -->
-                                <p class="card-text"><strong>1200 টাকা</strong></p>
+                                <p class="card-text"><strong>BDT 1200</strong></p>
                                 <div class="btn-group d-flex justify-content-between">
-                                    <a href="/course/1/preview/bn" class="btn btn-primary btn-preview">দেখুন</a>
-                                    <a href="/course/1/checkout/bn" class="btn btn-success btn-enroll">ক্রয় করুন</a>
+                                    <a href="/course/1/preview" class="btn btn-primary btn-preview">Preview</a>
+                                    <a href="/course/1/checkout" class="btn btn-success btn-enroll">Enroll</a>
                                 </div>
                             </div>
                         </div>
@@ -187,10 +180,9 @@
             </div>
 
             <div class="text-center">
-                <a class="btn btn-primary btn-more">আরও দেখুন</a>
+                <a class="btn btn-primary btn-more">More</a>
             </div>
 
         </div>
     </section>
-
 @endsection

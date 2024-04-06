@@ -19,4 +19,18 @@ class CourseController extends Controller
             'course' => $course,
         ]);
     }
+
+    public function checkout(Request $request, $course)
+    {
+        return view('course.checkout', [
+            'course' => $course,
+        ]);
+    }
+
+    public function checkoutBN(Request $request, $course)
+    {
+        return view('course.checkout-bn', [
+            'course' => $course,
+        ]);
+    }
 }
