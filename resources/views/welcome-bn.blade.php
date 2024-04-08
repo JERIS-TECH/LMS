@@ -328,7 +328,7 @@
                 {{ Auth::user()->name }}
             </a>
             <div id="drop-menu" class="dropdown-menu">
-                <a class="dropdown-item" href="{{ route('profile.edit') }}">{{ __('প্রোফাইল') }}</a>
+                <a class="dropdown-item" href="{{ route('profile.edit.bn') }}">{{ __('প্রোফাইল') }}</a>
                 <a class="dropdown-item" href="#">{{ __('আমার কোর্সগুলো') }}</a>
                 <a class="dropdown-item" href="#">{{ __('প্রিয় কোর্সগুলো') }}</a>
                 @if(Auth::user()->role_id == 3 || Auth::user()->role_id == 4)
