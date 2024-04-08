@@ -24,20 +24,26 @@
             >{{ __('Password Changed !!') }}</p>
         @endif
 
-        <div class="mb-3">
+        <!-- Current Password Field -->
+        <div class="mb-3 position-relative">
             <label style="font-weight: bold;" for="update_password_current_password" class="form-label">{{ __('Current Password') }}</label>
+            <span toggle="#update_password_current_password" class="fa fa-fw fa-eye-slash field-icon toggle-password"></span>
             <input id="update_password_current_password" name="current_password" type="password" class="form-control" autocomplete="current-password">
             <x-input-error :messages="$errors->updatePassword->get('current_password')" class="mt-2" style="color: red;" />
         </div>
 
-        <div class="mb-3">
+        <!-- New Password Field -->
+        <div class="mb-3 position-relative">
             <label style="font-weight: bold;" for="update_password_password" class="form-label">{{ __('New Password') }}</label>
+            <span toggle="#update_password_password" class="fa fa-fw fa-eye-slash field-icon toggle-password"></span>
             <input id="update_password_password" name="password" type="password" class="form-control" autocomplete="new-password">
             <x-input-error :messages="$errors->updatePassword->get('password')" class="mt-2" style="color: red;" />
         </div>
 
-        <div class="mb-3">
+        <!-- Confirm Password Field -->
+        <div class="mb-3 position-relative">
             <label style="font-weight: bold;" for="update_password_password_confirmation" class="form-label">{{ __('Confirm Password') }}</label>
+            <span toggle="#update_password_password_confirmation" class="fa fa-fw fa-eye-slash field-icon toggle-password"></span>
             <input id="update_password_password_confirmation" name="password_confirmation" type="password" class="form-control" autocomplete="new-password">
             <x-input-error :messages="$errors->updatePassword->get('password_confirmation')" class="mt-2" style="color: red;" />
         </div>

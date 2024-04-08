@@ -27,24 +27,26 @@
 
         <!-- Password -->
         <div class="mt-4">
-            <x-input-label style="color: black;" for="password" :value="__('Password *')" />
-
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <x-input-label style="color: black;" for="password" :value="__('Password *')" />
+                <span toggle="#password" class="fa fa-fw fa-eye-slash field-icon toggle-password"></span>
+            </div>
             <x-text-input style="background-color: #f0f8ff; color: black;" id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            autocomplete="new-password" />
-
+                          type="password"
+                          name="password"
+                          autocomplete="new-password" />
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
         <!-- Confirm Password -->
         <div class="mt-4">
-            <x-input-label style="color: black;" for="password_confirmation" :value="__('Confirm Password *')" />
-
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <x-input-label style="color: black;" for="password_confirmation" :value="__('Confirm Password *')" />
+                <span toggle="#password_confirmation" class="fa fa-fw fa-eye-slash field-icon toggle-password"></span>
+            </div>
             <x-text-input style="background-color: #f0f8ff; color: black;" id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" autocomplete="new-password" />
-
+                          type="password"
+                          name="password_confirmation" autocomplete="new-password" />
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
