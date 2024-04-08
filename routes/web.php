@@ -29,6 +29,12 @@ Route::get('course/{course_id}/preview/bn', [CourseController::class, 'previewBN
 Route::middleware('auth')->group(function () {
     Route::get('course/{course_id}/checkout', [CourseController::class, 'checkout'])->name('course.checkout');
     Route::get('course/{course_id}/checkout/bn', [CourseController::class, 'checkoutBN'])->name('course.checkout.bn');
+
+    Route::get('mycourses', [CourseController::class, 'mycourses'])->name('course.mycourses');
+    Route::get('mycourses/bn', [CourseController::class, 'mycoursesBN'])->name('course.mycourses.bn');
+
+    Route::get('favcourses', [CourseController::class, 'favcourses'])->name('course.favcourses');
+    Route::get('favcourses/bn', [CourseController::class, 'favcoursesBN'])->name('course.favcourses.bn');
 });
 
 require __DIR__.'/auth.php';

@@ -33,4 +33,24 @@ class CourseController extends Controller
             'course' => $course,
         ]);
     }
+
+    public function mycourses(Request $request)
+    {
+        return view('course.mycourses');
+    }
+
+    public function mycoursesBN(Request $request)
+    {
+        return view('course.mycourses-bn');
+    }
+
+    public function favcourses(Request $request)
+    {
+        return view('course.favcourses');
+    }
+
+    public function favcoursesBN(Request $request)
+    {
+        return view('course.favcourses-bn');
+    }
 }
