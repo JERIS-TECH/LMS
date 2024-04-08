@@ -8,7 +8,7 @@
             <div class="col-md-12">
                 <div class="card mb-4" style="background-color: #f0f8ff; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
                     <div class="card-header bg-primary text-white">
-                        Update Profile Information
+                        প্রোফাইল তথ্য আপডেট করুন
                     </div>
                     <div class="card-body">
                         @include('profile.partials.update-profile-information-form')
@@ -18,7 +18,7 @@
             <div class="col-md-12">
                 <div class="card mb-4" style="background-color: #f0f8ff; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
                     <div class="card-header bg-success text-white">
-                        Update Password
+                        পাসওয়ার্ড আপডেট করুন
                     </div>
                     <div class="card-body">
                         @include('profile.partials.update-password-form')
@@ -28,7 +28,7 @@
             <div class="col-md-12">
                 <div class="card" style="background-color: #f0f8ff; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
                     <div class="card-header bg-danger text-white">
-                        Delete Account Permanently
+                        স্থায়ীভাবে অ্যাকাউন্ট মুছে ফেলুন
                     </div>
                     <div class="card-body">
                         @include('profile.partials.delete-user-form')

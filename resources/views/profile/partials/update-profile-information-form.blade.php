@@ -1,15 +1,15 @@
 <section>
     <header>
-        <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+        <h2 class="text-lg font-medium">
             {{ __('Profile Information') }}
         </h2>
 
-        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-            {{ __("Update your account's profile information and email address.") }}
+        <p class="text-sm text-black-600">
+            {{ __("Update profile information.") }}
         </p>
     </header>
 
-    <form id="send-verification" method="post" action="{{ route('verification.send') }}">
+    <form method="post" action="{{ route('verification.send') }}" id="send-verification">
         @csrf
     </form>
 
@@ -17,48 +17,71 @@
         @csrf
         @method('patch')
 
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
-            <x-input-error class="mt-2" :messages="$errors->get('name')" />
+        @if (session('status') === 'profile-updated')
+            <p class="text-success" style="font-weight: bold;">{{ __('Saved !!') }}</p>
+        @endif
+
+        <div class="mb-4">
+            <label style="font-weight: bold;" for="name" class="form-label">{{ __('Name') }}</label>
+            <input id="name" name="name" type="text" class="form-control" style="border-color: black;" value="{{ old('name', $user->name) }}" autofocus autocomplete="name">
+            @error('name')
+            <p class="text-danger">{{ $message }}</p>
+            @enderror
         </div>
 
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)" required autocomplete="username" />
-            <x-input-error class="mt-2" :messages="$errors->get('email')" />
-
+        <div class="mb-4">
+            <label style="font-weight: bold;" for="email" class="form-label">{{ __('Email') }}</label>
+            <input id="email" name="email" type="email" class="form-control" style="border-color: black;" value="{{ old('email', $user->email) }}" autocomplete="username">
             @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
-                <div>
-                    <p class="text-sm mt-2 text-gray-800 dark:text-gray-200">
+                <div class="mt-2">
+                    <p class="text-sm text-gray-600">
                         {{ __('Your email address is unverified.') }}
-
-                        <button form="send-verification" class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">
-                            {{ __('Click here to re-send the verification email.') }}
-                        </button>
+                        <button form="send-verification" class="btn btn-link">{{ __('Click here to re-send the verification email.') }}</button>
                     </p>
-
                     @if (session('status') === 'verification-link-sent')
-                        <p class="mt-2 font-medium text-sm text-green-600 dark:text-green-400">
-                            {{ __('A new verification link has been sent to your email address.') }}
-                        </p>
+                        <p class="text-success">{{ __('A new verification link has been sent to your email address.') }}</p>
                     @endif
                 </div>
             @endif
+            @error('email')
+            <p class="text-danger">{{ $message }}</p>
+            @enderror
         </div>
 
-        <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('Save') }}</x-primary-button>
+        <div class="mb-4">
+            <label style="font-weight: bold;" for="phone" class="form-label">{{ __('Phone') }}</label>
+            <input id="phone" name="phone" type="tel" class="form-control" style="border-color: black;" value="{{ old('phone', $user->phone) }}" autocomplete="phone">
+            @error('phone')
+            <p class="text-danger">{{ $message }}</p>
+            @enderror
+        </div>
 
-            @if (session('status') === 'profile-updated')
-                <p
-                    x-data="{ show: true }"
-                    x-show="show"
-                    x-transition
-                    x-init="setTimeout(() => show = false, 2000)"
-                    class="text-sm text-gray-600 dark:text-gray-400"
-                >{{ __('Saved.') }}</p>
-            @endif
+        <div class="mb-4">
+            <label style="font-weight: bold;" for="address" class="form-label">{{ __('Address') }}</label>
+            <input id="address" name="address" type="text" class="form-control" style="border-color: black;" value="{{ old('address', $user->address) }}" autocomplete="address">
+            @error('address')
+            <p class="text-danger">{{ $message }}</p>
+            @enderror
+        </div>
+
+        <div class="mb-4">
+            <label style="font-weight: bold;" for="fb_id_link" class="form-label">{{ __('Facebook ID Link') }}</label>
+            <input id="fb_id_link" name="fb_id_link" type="text" class="form-control" style="border-color: black;" value="{{ old('fb_id_link', $user->fb_id_link) }}" autocomplete="fb_id_link">
+            @error('fb_id_link')
+            <p class="text-danger">{{ $message }}</p>
+            @enderror
+        </div>
+
+        <div class="mb-4">
+            <label style="font-weight: bold;" for="created_at" class="form-label">{{ __('Joined On') }}</label>
+            <input id="created_at" name="created_at" type="text" class="form-control" style="border-color: black;" value="{{ old('created_at', $user->created_at) }}" disabled autocomplete="created_at">
+            @error('created_at')
+            <p class="text-danger">{{ $message }}</p>
+            @enderror
+        </div>
+
+        <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>
         </div>
     </form>
 </section>
