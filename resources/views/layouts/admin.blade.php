@@ -328,17 +328,17 @@
         <div id="drop-menu" class="dropdown-menu">
             @if(strpos(Request::path(), '/bn') === false)
                 <a class="dropdown-item {{ Route::currentRouteName() == 'admin.dashboard' ? 'active-now' : '' }}" href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a>
-                <a class="dropdown-item" href="">{{ __('Add Category') }}</a>
-                <a class="dropdown-item" href="">{{ __('Add Course') }}</a>
-                <a class="dropdown-item" href="">{{ __('Add Coupon Code') }}</a>
+                <a class="dropdown-item" href="">{{ __('Categories') }}</a>
+                <a class="dropdown-item" href="">{{ __('Courses') }}</a>
+                <a class="dropdown-item" href="">{{ __('Coupon Codes') }}</a>
                 <a class="dropdown-item" href="">{{ __('Users') }}</a>
                 <a class="dropdown-item" href="">{{ __('Enrollments') }}</a>
 
             @else
                 <a class="dropdown-item {{ Route::currentRouteName() == 'admin.dashboard' ? 'active-now' : '' }}" href="{{ route('admin.dashboard') }}">{{ __('ড্যাশবোর্ড') }}</a>
-                <a class="dropdown-item" href="">{{ __('অ্যাড ক্যাটাগরি') }}</a>
-                <a class="dropdown-item" href="">{{ __('অ্যাড কোর্স') }}</a>
-                <a class="dropdown-item" href="">{{ __('অ্যাড কুপন কোড') }}</a>
+                <a class="dropdown-item" href="">{{ __('ক্যাটাগরি') }}</a>
+                <a class="dropdown-item" href="">{{ __('কোর্স') }}</a>
+                <a class="dropdown-item" href="">{{ __('কুপন কোড') }}</a>
                 <a class="dropdown-item" href="">{{ __('ইউজার্স ') }}</a>
                 <a class="dropdown-item" href="">{{ __('এনরোলমেন্টস') }}</a>
             @endif
