@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -35,6 +36,10 @@ Route::middleware('auth')->group(function () {
 
     Route::get('favcourses', [CourseController::class, 'favcourses'])->name('course.favcourses');
     Route::get('favcourses/bn', [CourseController::class, 'favcoursesBN'])->name('course.favcourses.bn');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 });
 
 require __DIR__.'/auth.php';
