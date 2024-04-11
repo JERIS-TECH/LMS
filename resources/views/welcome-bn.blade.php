@@ -332,7 +332,7 @@
                 <a class="dropdown-item" href="{{ route('course.mycourses.bn') }}">{{ __('আমার কোর্সগুলো') }}</a>
                 <a class="dropdown-item" href="{{ route('course.favcourses.bn') }}">{{ __('প্রিয় কোর্সগুলো') }}</a>
                 @if(Auth::user()->role_id == 3 || Auth::user()->role_id == 4)
-                    <a class="dropdown-item" href="#">{{ __('অ্যাডমিন প্যানেল') }}</a>
+                    <a class="dropdown-item" href="{{ route('admin.dashboard') }}">{{ __('অ্যাডমিন প্যানেল') }}</a>
                 @endif
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">

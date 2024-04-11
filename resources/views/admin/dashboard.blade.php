@@ -3,6 +3,17 @@
 @section('title', 'Dashboard')
 
 @section('content')
+
+    <style>
+        .card {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+
     <!-- Overview Section -->
     <section class="section mt-4 with-shadow" style="background-color: #f0f8ff; padding: 20px; border-radius: 15px;">
         <div class="container">

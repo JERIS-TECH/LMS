@@ -188,6 +188,14 @@
             color: #f00; /* Change color on hover */
         }
 
+        .active-now {
+            color: deeppink !important;
+        }
+
+        .active-now:hover {
+            color: white !important;
+        }
+
 
     </style>
 
@@ -314,17 +322,17 @@
     <!-- Name Dropdown -->
     @auth
         <div class="nav-item dropdown">
-            <a id="drop-all-courses" class="nav-link dropdown-toggle namedropdown" href="#" role="button"
+            <button id="drop-all-courses" class="nav-link dropdown-toggle namedropdown" role="button"
                data-bs-toggle="dropdown" aria-expanded="false">
                 {{ Auth::user()->name }}
-            </a>
+            </button>
             <div id="drop-menu" class="dropdown-menu">
                 @if(strpos(Request::path(), '/bn') === false)
-                    <a class="dropdown-item" href="{{ route('profile.edit') }}">{{ __('Profile') }}</a>
-                    <a class="dropdown-item" href="{{ route('course.mycourses') }}">{{ __('My Courses') }}</a>
-                    <a class="dropdown-item" href="{{ route('course.favcourses') }}">{{ __('Favourites') }}</a>
-                    @if(Auth::user()->role_id == 3 || Auth::user()->role_id == 4)
-                        <a class="dropdown-item" href="#">{{ __('Admin Panel') }}</a>
+                    <a class="dropdown-item {{ Route::currentRouteName() == 'profile.edit' ? 'active-now' : '' }}" href="{{ route('profile.edit') }}">{{ __('Profile') }}</a>
+                    <a class="dropdown-item {{ Route::currentRouteName() == 'course.mycourses' ? 'active-now' : '' }}" href="{{ route('course.mycourses') }}">{{ __('My Courses') }}</a>
+                    <a class="dropdown-item {{ Route::currentRouteName() == 'course.favcourses' ? 'active-now' : '' }}" href="{{ route('course.favcourses') }}">{{ __('Favourites') }}</a>
+                @if(Auth::user()->role_id == 3 || Auth::user()->role_id == 4)
+                        <a class="dropdown-item" href="{{ route('admin.dashboard') }}">{{ __('Admin Panel') }}</a>
                     @endif
                     <!-- Authentication -->
                     <form method="POST" action="{{ route('logout') }}">
@@ -337,11 +345,11 @@
                         </a>
                     </form>
                 @else
-                    <a class="dropdown-item" href="{{ route('profile.edit.bn') }}">{{ __('প্রোফাইল') }}</a>
-                    <a class="dropdown-item" href="{{ route('course.mycourses.bn') }}">{{ __('আমার কোর্সগুলো') }}</a>
-                    <a class="dropdown-item" href="{{ route('course.favcourses.bn') }}">{{ __('প্রিয় কোর্সগুলো') }}</a>
+                    <a class="dropdown-item {{ Route::currentRouteName() == 'profile.edit.bn' ? 'active-now' : '' }}" href="{{ route('profile.edit.bn') }}">{{ __('প্রোফাইল') }}</a>
+                    <a class="dropdown-item {{ Route::currentRouteName() == 'course.mycourses.bn' ? 'active-now' : '' }}" href="{{ route('course.mycourses.bn') }}">{{ __('আমার কোর্সগুলো') }}</a>
+                    <a class="dropdown-item {{ Route::currentRouteName() == 'course.favcourses.bn' ? 'active-now' : '' }}" href="{{ route('course.favcourses.bn') }}">{{ __('প্রিয় কোর্সগুলো') }}</a>
                     @if(Auth::user()->role_id == 3 || Auth::user()->role_id == 4)
-                        <a class="dropdown-item" href="#">{{ __('অ্যাডমিন প্যানেল') }}</a>
+                        <a class="dropdown-item" href="{{ route('admin.dashboard') }}">{{ __('অ্যাডমিন প্যানেল') }}</a>
                     @endif
                     <!-- Authentication -->
                     <form method="POST" action="{{ route('logout') }}">
