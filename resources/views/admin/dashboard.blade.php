@@ -24,7 +24,7 @@
                     <div class="card shadow h-100 hover-effect" style="background-color: #ffe8e8;">
                         <div class="card-body">
                             <h5 class="card-title text-center">Total Users</h5>
-                            <p class="card-text text-center">1000</p>
+                            <p class="card-text text-center"> {{ $all_users }} </p>
                         </div>
                     </div>
                 </div>
@@ -40,7 +40,7 @@
                     <div class="card shadow h-100 hover-effect" style="background-color: #fff4e8;">
                         <div class="card-body">
                             <h5 class="card-title text-center">Total Courses</h5>
-                            <p class="card-text text-center">50</p>
+                            <p class="card-text text-center">{{ $all_courses }}</p>
                         </div>
                     </div>
                 </div>
@@ -57,7 +57,7 @@
                     <div class="card shadow h-100 hover-effect" style="background-color: #fcf0ff;">
                         <div class="card-body">
                             <h5 class="card-title text-center">Total Income</h5>
-                            <p class="card-text text-center">$1000</p>
+                            <p class="card-text text-center">BDT 1000</p>
                         </div>
                     </div>
                 </div>
