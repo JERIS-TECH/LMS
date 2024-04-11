@@ -216,10 +216,10 @@
 
     <!-- All Courses Dropdown -->
     <div class="nav-item dropdown">
-        <a id="drop-all-courses" class="nav-link dropdown-toggle btn btn-info" href="#" role="button"
+        <button id="drop-all-courses" class="nav-link dropdown-toggle btn btn-info" role="button"
            data-bs-toggle="dropdown" aria-expanded="false">
             কোর্স সমুহ
-        </a>
+        </button>
         <ul id="drop-menu" class="dropdown-menu">
             <li><a class="dropdown-item" href="#">Action</a></li>
             <li><a class="dropdown-item" href="#">Another action</a></li>
@@ -227,7 +227,7 @@
                 <hr class="dropdown-divider">
             </li>
             <li class="nav-item dropend">
-                <a class="nav-link dropdown-toggle inner-drop-down" href="#" role="button" data-bs-toggle="dropdown"
+                <a class="nav-link dropdown-toggle inner-drop-down" role="button" data-bs-toggle="dropdown"
                    aria-expanded="false">
                     Development
                 </a>
@@ -238,13 +238,13 @@
                         <hr class="dropdown-divider">
                     </li>
                     <li class="nav-item dropend">
-                        <a class="nav-link dropdown-toggle inner-drop-down" href="#" role="button"
+                        <a class="nav-link dropdown-toggle inner-drop-down" role="button"
                            data-bs-toggle="dropdown" aria-expanded="false">
                             Web Development
                         </a>
                         <ul class="dropdown-menu">
                             <li class="nav-item dropend">
-                                <a class="nav-link dropdown-toggle inner-drop-down" href="#" role="button"
+                                <a class="nav-link dropdown-toggle inner-drop-down" role="button"
                                    data-bs-toggle="dropdown" aria-expanded="false">
                                     Frontend
                                 </a>
@@ -257,7 +257,7 @@
                                 </ul>
                             </li>
                             <li class="nav-item dropend">
-                                <a class="nav-link dropdown-toggle inner-drop-down" href="#" role="button"
+                                <a class="nav-link dropdown-toggle inner-drop-down" role="button"
                                    data-bs-toggle="dropdown" aria-expanded="false">
                                     Backend
                                 </a>
@@ -323,10 +323,10 @@
     <!-- Name Dropdown -->
     @auth
         <div class="nav-item dropdown">
-            <a id="drop-all-courses" class="nav-link dropdown-toggle namedropdown" href="#" role="button"
+            <button id="drop-all-courses" class="nav-link dropdown-toggle namedropdown" role="button"
                data-bs-toggle="dropdown" aria-expanded="false">
                 {{ Auth::user()->name }}
-            </a>
+            </button>
             <div id="drop-menu" class="dropdown-menu">
                 <a class="dropdown-item" href="{{ route('profile.edit.bn') }}">{{ __('প্রোফাইল') }}</a>
                 <a class="dropdown-item" href="{{ route('course.mycourses.bn') }}">{{ __('আমার কোর্সগুলো') }}</a>
