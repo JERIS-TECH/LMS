@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 31, 2024 at 07:33 PM
+-- Generation Time: Apr 11, 2024 at 09:20 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -42,14 +42,6 @@ CREATE TABLE `cache` (
   `expiration` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `cache`
---
-
-INSERT INTO `cache` (`key`, `value`, `expiration`) VALUES
-('israk@israk.com|127.0.0.1', 'i:1;', 1711905541),
-('israk@israk.com|127.0.0.1:timer', 'i:1711905541;', 1711905541);
-
 -- --------------------------------------------------------
 
 --
@@ -71,8 +63,8 @@ CREATE TABLE `cache_locks` (
 CREATE TABLE `categories` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -86,15 +78,15 @@ CREATE TABLE `courses` (
   `title` varchar(255) NOT NULL,
   `thumbnail_path` varchar(255) NOT NULL,
   `preview_path` varchar(255) NOT NULL,
-  `price` float(16,2) NOT NULL,
+  `price` float NOT NULL,
   `author` varchar(255) NOT NULL,
   `language` varchar(255) NOT NULL,
   `description` text NOT NULL,
   `course_contents` text NOT NULL,
   `what_to_learn` text DEFAULT NULL,
   `category_id` bigint(20) UNSIGNED NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -106,11 +98,11 @@ CREATE TABLE `courses` (
 CREATE TABLE `discounts` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `code` varchar(255) NOT NULL,
-  `amount` float(16,2) DEFAULT NULL,
-  `percentage` float(16,2) DEFAULT NULL,
+  `amount` float DEFAULT NULL,
+  `percentage` float DEFAULT NULL,
   `course_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -124,8 +116,8 @@ CREATE TABLE `enrollments` (
   `user_id` bigint(20) UNSIGNED NOT NULL,
   `course_id` bigint(20) UNSIGNED NOT NULL,
   `transaction_id` bigint(20) UNSIGNED NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -152,10 +144,10 @@ CREATE TABLE `failed_jobs` (
 
 CREATE TABLE `incomes` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `amount` float(16,2) NOT NULL,
+  `amount` float NOT NULL,
   `transaction_id` bigint(20) UNSIGNED NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -205,6 +197,23 @@ CREATE TABLE `migrations` (
   `batch` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `migrations`
+--
+
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(1, '2024_04_01_111206_create_cache_table', 1),
+(2, '2024_04_01_111207_create_jobs_table', 1),
+(3, '2024_04_01_111208_create_roles_table', 1),
+(4, '2024_04_01_111209_create_users_table', 1),
+(5, '2024_04_01_111210_create_categories_table', 1),
+(6, '2024_04_01_111211_create_courses_table', 1),
+(7, '2024_04_01_111212_create_videos_table', 1),
+(8, '2024_04_01_111213_create_discounts_table', 1),
+(9, '2024_04_01_111214_create_transactions_table', 1),
+(10, '2024_04_01_111215_create_enrollments_table', 1),
+(11, '2024_04_01_111216_create_incomes_table', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -225,18 +234,20 @@ CREATE TABLE `password_reset_tokens` (
 
 CREATE TABLE `roles` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `role_name` varchar(255) NOT NULL
+  `role_name` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `roles`
 --
 
-INSERT INTO `roles` (`id`, `role_name`) VALUES
-(1, 'General User'),
-(2, 'Paid User'),
-(3, 'Admin'),
-(4, 'Master Admin');
+INSERT INTO `roles` (`id`, `role_name`, `created_at`, `updated_at`) VALUES
+(1, 'General User', NULL, NULL),
+(2, 'Paid User', NULL, NULL),
+(3, 'Admin', NULL, NULL),
+(4, 'Master Admin', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -258,7 +269,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('lo7CDubHMPpKprrxfRRAn6X4KiyPHfuCsDjp00dc', 3, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiNUE3dzc0bnEzUExGU0NBS2ZQY1VDQWROSUFmelI4VnJhZG1ZR2RtSCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9kYXNoYm9hcmQiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aTozO30=', 1711906283);
+('2E2VDySOX7Jdo0DipvR1nFZAAdgrR5Im0bZ3LFLK', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiYmRmemR5SFZiMzJTQzRpVUZLSjlqR2JoRjhxMWVaMHRPSElEamRaSCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fX0=', 1712862613);
 
 -- --------------------------------------------------------
 
@@ -270,12 +281,12 @@ CREATE TABLE `transactions` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `user_id` bigint(20) UNSIGNED NOT NULL,
   `course_id` bigint(20) UNSIGNED NOT NULL,
-  `course_price` float(16,2) NOT NULL,
-  `discount` float(16,2) NOT NULL,
-  `total_paid_amount` float(16,2) NOT NULL,
+  `course_price` float NOT NULL,
+  `discount` float NOT NULL,
+  `total_paid_amount` float NOT NULL,
   `payment_type` varchar(255) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -290,14 +301,14 @@ CREATE TABLE `users` (
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `phone` bigint(13) NOT NULL,
+  `phone` bigint(20) NOT NULL,
   `password` varchar(255) NOT NULL,
   `remember_token` varchar(100) DEFAULT NULL,
   `profile_img_path` varchar(255) DEFAULT NULL,
   `address` text DEFAULT NULL,
   `fb_id_link` varchar(255) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -305,7 +316,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `email_verified_at`, `phone`, `password`, `remember_token`, `profile_img_path`, `address`, `fb_id_link`, `created_at`, `updated_at`) VALUES
-(3, 1, 'israk@israk.com', 'israk@israk.com', NULL, 1230123012, '$2y$12$pX2DVhLAuq7FuqdQXwOyC.jLndcikj8SzBEPYz9n2GqA.GznjNVYq', NULL, NULL, NULL, NULL, '2024-03-31 11:31:13', '2024-03-31 11:31:13');
+(4, 4, 'Israk Ahmed', 'israk@israk.com', NULL, 12301201000, '$2y$12$PFD1/buUpQSUZQGfWeFIIu4JvBNA5g5tFTBExTC9lvqPT8PncwV/O', 'haR7rT38aZpB3qnPWjLuz3CTIuxanWq6otC34kKoJPOw7CkFWO1MkI43V2xO', NULL, 'bogra', 'dfsdfsdfdsf', '2024-04-08 07:39:20', '2024-04-08 08:16:32'),
+(5, 1, 'Esrat Jahan Riya', 'riya@riya.com', NULL, 12345678912, '$2y$12$d7fPZrQ04uZAyTJmwL5Ps..8uYNg2Wjr6UHaF9wVGqoj.Vfa3raS2', NULL, NULL, NULL, NULL, '2024-04-11 12:19:18', '2024-04-11 12:19:48');
 
 -- --------------------------------------------------------
 
@@ -319,8 +331,8 @@ CREATE TABLE `videos` (
   `video_path` varchar(255) NOT NULL,
   `thumbnail_path` varchar(255) NOT NULL,
   `course_id` bigint(20) UNSIGNED NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -350,23 +362,23 @@ ALTER TABLE `categories`
 --
 ALTER TABLE `courses`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `category_id` (`category_id`);
+  ADD KEY `courses_category_id_foreign` (`category_id`);
 
 --
 -- Indexes for table `discounts`
 --
 ALTER TABLE `discounts`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `course_id` (`course_id`);
+  ADD KEY `discounts_course_id_foreign` (`course_id`);
 
 --
 -- Indexes for table `enrollments`
 --
 ALTER TABLE `enrollments`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `course_id` (`course_id`),
-  ADD KEY `transaction_id` (`transaction_id`);
+  ADD KEY `enrollments_user_id_foreign` (`user_id`),
+  ADD KEY `enrollments_course_id_foreign` (`course_id`),
+  ADD KEY `enrollments_transaction_id_foreign` (`transaction_id`);
 
 --
 -- Indexes for table `failed_jobs`
@@ -380,7 +392,7 @@ ALTER TABLE `failed_jobs`
 --
 ALTER TABLE `incomes`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `transaction_id` (`transaction_id`);
+  ADD KEY `incomes_transaction_id_foreign` (`transaction_id`);
 
 --
 -- Indexes for table `jobs`
@@ -426,8 +438,8 @@ ALTER TABLE `sessions`
 --
 ALTER TABLE `transactions`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `course_id` (`course_id`);
+  ADD KEY `transactions_user_id_foreign` (`user_id`),
+  ADD KEY `transactions_course_id_foreign` (`course_id`);
 
 --
 -- Indexes for table `users`
@@ -435,14 +447,14 @@ ALTER TABLE `transactions`
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `users_email_unique` (`email`),
-  ADD KEY `role_id` (`role_id`);
+  ADD KEY `users_role_id_foreign` (`role_id`);
 
 --
 -- Indexes for table `videos`
 --
 ALTER TABLE `videos`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `course_id` (`course_id`);
+  ADD KEY `videos_course_id_foreign` (`course_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -494,7 +506,7 @@ ALTER TABLE `jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -512,7 +524,7 @@ ALTER TABLE `transactions`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `videos`
@@ -528,46 +540,46 @@ ALTER TABLE `videos`
 -- Constraints for table `courses`
 --
 ALTER TABLE `courses`
-  ADD CONSTRAINT `courses_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `courses_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `discounts`
 --
 ALTER TABLE `discounts`
-  ADD CONSTRAINT `discounts_ibfk_1` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `discounts_course_id_foreign` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `enrollments`
 --
 ALTER TABLE `enrollments`
-  ADD CONSTRAINT `enrollments_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `enrollments_ibfk_2` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `enrollments_ibfk_3` FOREIGN KEY (`transaction_id`) REFERENCES `transactions` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `enrollments_course_id_foreign` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `enrollments_transaction_id_foreign` FOREIGN KEY (`transaction_id`) REFERENCES `transactions` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `enrollments_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `incomes`
 --
 ALTER TABLE `incomes`
-  ADD CONSTRAINT `incomes_ibfk_1` FOREIGN KEY (`transaction_id`) REFERENCES `transactions` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `incomes_transaction_id_foreign` FOREIGN KEY (`transaction_id`) REFERENCES `transactions` (`id`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `transactions`
 --
 ALTER TABLE `transactions`
-  ADD CONSTRAINT `transactions_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `transactions_ibfk_2` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `transactions_course_id_foreign` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `transactions_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `users`
 --
 ALTER TABLE `users`
-  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`);
+  ADD CONSTRAINT `users_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`);
 
 --
 -- Constraints for table `videos`
 --
 ALTER TABLE `videos`
-  ADD CONSTRAINT `videos_ibfk_1` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `videos_course_id_foreign` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
